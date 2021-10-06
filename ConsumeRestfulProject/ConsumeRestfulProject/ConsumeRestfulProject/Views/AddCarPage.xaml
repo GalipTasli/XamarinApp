@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:ConsumeRestfulProject.ViewModels"
+             x:Class="ConsumeRestfulProject.Views.AddCarPage">
+
+    <ContentPage.BindingContext>
+        <vm:AddCarViewModel></vm:AddCarViewModel>
+
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="MidnightBlue">
+            <ScrollView>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image BackgroundColor="CornflowerBlue" WidthRequest="200" HeightRequest="200" Source="{Binding ImgSource}"></Image>
+                    <Entry Placeholder="Image Uri" Text="{Binding ImageUri}" TextColor="White" PlaceholderColor="CornflowerBlue" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry Placeholder="Brand" Text="{Binding Brand}" TextColor="White" PlaceholderColor="CornflowerBlue" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry Placeholder="Model" Text="{Binding Model}" TextColor="White" PlaceholderColor="CornflowerBlue" HorizontalOptions="FillAndExpand"></Entry>
+
+                    <Entry Placeholder="Year" Text="{Binding Year}" TextColor="White" PlaceholderColor="CornflowerBlue" HorizontalOptions="FillAndExpand"></Entry>
+                    <Editor Placeholder="Details" TextColor="White" Text="{Binding Details}" PlaceholderColor="CornflowerBlue" HorizontalOptions="FillAndExpand"
+                            HeightRequest="100"
+                            ></Editor>
+
+                    <Button Text="Kaydet" Command="{Binding AddCommand}"></Button>
+                </StackLayout>
+
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

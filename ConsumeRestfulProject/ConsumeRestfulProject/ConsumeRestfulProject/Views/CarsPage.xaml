@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="contentPage"
+             xmlns:controls="clr-namespace:ConsumeRestfulProject.Controls"
+             x:Class="ConsumeRestfulProject.Views.CarsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Car" Order="Primary" Priority="0" Command="{Binding AddCarCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150" BackgroundColor="AliceBlue">
+                <StackLayout Orientation="Horizontal">
+                    <Image Margin="10" Source="{Binding ProfilImage}" BackgroundColor="CornflowerBlue" WidthRequest="100" HeightRequest="100" HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="{Binding User.USERNAME}"  FontSize="24" FontAttributes="Bold"></Label>
+                        <Label  Text="{Binding User.NAME}" FontSize="18" FontAttributes="None"></Label>
+                        <Label  Text="{Binding User.SURNAME}"  FontSize="18" FontAttributes="None"></Label>
+
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="DarkBlue">
+                    <ListView HasUnevenRows="True" ItemsSource="{Binding CarList}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}"
+                              IsRefreshing="{Binding IsRefreshing}"
+                              >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Delete" Command="{Binding Source={x:Reference contentPage}, Path=BindingContext.DeleteCarCommand}"
+                                                 CommandParameter="{Binding .}" ></MenuItem>
+
+                                    </ViewCell.ContextActions>
+                                    <controls:CarControl BrandText="{Binding BRAND}" YearText="{Binding YEAR}"
+                                                         DetailsText="{Binding DETAILS}" ModelText="{Binding MODEL}"
+                                                         ImageUri="{Binding IMAGE}"
+                                                         ></controls:CarControl>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:ConsumeRestfulProject.ViewModels"
+             x:Class="ConsumeRestfulProject.Views.MainPage">
+
+
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel></vm:MainPageViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="MidnightBlue">
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Image VerticalOptions="Center" Source="{Binding ImgSource}" HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" BackgroundColor="CornflowerBlue"></Image>
+                <Entry Placeholder="Username"  Text="{Binding Username}" WidthRequest="250" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" PlaceholderColor="CornflowerBlue"></Entry>
+                <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" WidthRequest="250" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" PlaceholderColor="CornflowerBlue"></Entry>
+                <StackLayout IsVisible="{Binding LoayutIsVisible}">
+                    <Button Text="LogIn" BackgroundColor="CornflowerBlue" Command="{Binding LoginCommand}"></Button>
+                    <Button Text="SıngUp" BackgroundColor="CornflowerBlue" Command="{Binding SignUpCommand}"></Button>
+                    <Label TextColor="LightSkyBlue" Text="{Binding LoginStatus}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <ActivityIndicator IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
